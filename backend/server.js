@@ -17,9 +17,12 @@ dotenv.config();
 
 const app = express();
 
+// Middleware to use/parse json data in request body
+app.use(express.json());
+
 
 // Endpoint to create a product for our store
-app.post("/products", async (req, res) => {
+app.post("/api/products", async (req, res) => {
     const product = req.body;           // User will send product details via request body
     // Check if all the required details are provided in request
     if (!product.name || !product.price || !product.image) {
