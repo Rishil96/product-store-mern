@@ -52,6 +52,15 @@ export const createProduct = async (req, res) => {
 export const updateProduct = async (req, res) => {
     // Get id from URL
     const { id } = req.params;
+
+    // Check if id is valid
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({
+            success: false, 
+            message: "Invalid Product ID."
+        });
+    }
+    
     try {
         await Product.findByIdAndDelete(id);
         res.status(200).json({
@@ -60,9 +69,9 @@ export const updateProduct = async (req, res) => {
         })
     } catch (error) {
         console.error(error);
-        res.status(404).json({
+        res.status(500).json({
             success: false, 
-            message: `Product with ID ${id} was not found.`
+            message: "Internal Server Error. Please check console for more details"
         })
     }
 };
@@ -77,7 +86,7 @@ export const deleteProduct = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({
             success: false, 
-            message: "Invalid Product Id."
+            message: "Invalid Product ID."
         });
     }
 
