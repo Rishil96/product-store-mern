@@ -15,3 +15,5 @@
 - In our main.jsx file, wrap our App Component which is our starting component in our frontend with ChakraProvider tags for us to effectively use Chakra components in our frontend.
 - Remove CSS files index.css and App.css as we won't use it.
 - Install react-router-dom and wrap our App component in main.jsx with BrowserRouter component that allows us to add multiple routes/pages in our frontend and switch between them effectively without refreshing the entire page.
+
+- Chakra-UI Page: https://v2.chakra-ui.com/getting-started/vite-guide
